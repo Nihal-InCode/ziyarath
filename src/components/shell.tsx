@@ -105,7 +105,7 @@ export function Shell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
           <div className="flex min-w-0 items-center gap-2.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/icon-192.png" alt="" className="size-8 shrink-0 rounded-xl object-cover" />
+            <img src="/icon-192.png" alt="" className="size-8 shrink-0 rounded-xl object-cover shadow-xs ring-1 ring-black/5" />
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold leading-tight text-zinc-900">
                 {isAdmin ? 'Ziyarah Admin' : tripName || 'Ziyarah'}

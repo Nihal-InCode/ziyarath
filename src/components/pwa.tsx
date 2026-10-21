@@ -66,7 +66,7 @@ export function PwaRegister() {
   return (
     <div className="fixed inset-x-3 bottom-3 z-50 mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3 shadow-lg">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/icon-192.png" alt="" className="size-9 shrink-0 rounded-xl object-cover" />
+      <img src="/icon-192.png" alt="" className="size-9 shrink-0 rounded-xl object-cover shadow-xs ring-1 ring-black/5" />
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-zinc-900">Install Ziyarah</p>
         <p className="text-xs text-zinc-500">Add to your home screen for quick access.</p>

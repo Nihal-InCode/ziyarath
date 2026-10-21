@@ -4,7 +4,7 @@
  * assets; precaches the app shell so the install icon appears and the app
  * opens instantly (with an offline banner when the network is down).
  */
-const VERSION = 'ziyarah-v2'
+const VERSION = 'ziyarah-v3'
 const SHELL_CACHE = `${VERSION}-shell`
 const ASSET_CACHE = `${VERSION}-assets`
 const PAGE_CACHE = `${VERSION}-pages`

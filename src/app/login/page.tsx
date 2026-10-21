@@ -51,7 +51,7 @@ export default function LoginPage() {
           <img
             src="/icon-192.png"
             alt=""
-            className="mx-auto mb-4 size-14 rounded-2xl object-cover"
+            className="mx-auto mb-4 size-14 rounded-2xl object-cover shadow-md ring-1 ring-black/10"
           />
           <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Ziyarah</h1>
           <p className="mt-1.5 text-sm text-zinc-500">

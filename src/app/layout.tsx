@@ -14,7 +14,10 @@ export const metadata: Metadata = {
   description: 'Expense, budget and itinerary management for college Ziyarath trips.',
   manifest: '/manifest.json',
   icons: {
-    icon: [{ url: '/icon-192.png', sizes: '192x192', type: 'image/png' }],
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+    ],
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   appleWebApp: {
