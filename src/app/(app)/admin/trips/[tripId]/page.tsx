@@ -125,7 +125,7 @@ export default function AdminTripDetailPage() {
   const tabs: { id: Tab; label: string }[] = [
     { id: 'overview', label: 'Overview' },
     { id: 'expenses', label: 'Expenses' },
-    { id: 'itinerary', label: 'Itinerary' },
+    { id: 'itinerary', label: 'Map' },
     { id: 'progress', label: 'Progress' },
     { id: 'ratings', label: 'Ratings' },
   ]

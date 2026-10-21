@@ -10,7 +10,6 @@ import {
   Map,
   PlusCircle,
   Settings,
-  Star,
   Users,
   Wallet,
 } from 'lucide-react'
@@ -35,14 +34,13 @@ const coordinatorNav: NavItem[] = [
   { href: '/home', label: 'Home', icon: <Gauge className="size-5" /> },
   { href: '/expenses', label: 'Expenses', icon: <IndianRupee className="size-5" /> },
   { href: '/expenses/new', label: 'Add', icon: <PlusCircle className="size-5" />, fab: true },
-  { href: '/itinerary', label: 'Itinerary', icon: <Map className="size-5" /> },
-  { href: '/feedback', label: 'Ratings', icon: <Star className="size-5" /> },
+  { href: '/itinerary', label: 'Map', icon: <Map className="size-5" /> },
 ]
 
 const adminNav: NavItem[] = [
   { href: '/admin', label: 'Dashboard', icon: <Gauge className="size-5" /> },
   { href: '/admin/expenses', label: 'Expenses', icon: <IndianRupee className="size-5" /> },
-  { href: '/admin/itinerary', label: 'Itinerary', icon: <Map className="size-5" /> },
+  { href: '/admin/itinerary', label: 'Map', icon: <Map className="size-5" /> },
   { href: '/admin/trips', label: 'Trips', icon: <Compass className="size-5" /> },
   { href: '/admin/reports', label: 'Reports', icon: <LayoutGrid className="size-5" /> },
   { href: '/admin/coordinators', label: 'People', icon: <Users className="size-5" /> },
@@ -196,7 +194,7 @@ export function Shell({ children }: { children: ReactNode }) {
 
       {/* Mobile bottom nav */}
       <nav className="no-print fixed inset-x-0 bottom-0 z-40 border-t border-zinc-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur md:hidden">
-        <div className={`mx-auto grid h-16 max-w-lg ${isAdmin ? 'grid-cols-6' : 'grid-cols-5'}`}>
+        <div className={`mx-auto grid h-16 max-w-lg ${isAdmin ? 'grid-cols-6' : 'grid-cols-4'}`}>
           {nav.map((item) => {
             const active = isActive(pathname, item.href)
             if (item.fab) {

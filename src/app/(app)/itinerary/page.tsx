@@ -22,14 +22,6 @@ interface ItineraryResult {
 
 const DELAY_REASONS = ['Traffic', 'Weather', 'Extended visit', 'Transport issues', 'Road block', 'Other']
 
-const RATING_CRITERIA = [
-  { key: 'destination', label: 'Destination' },
-  { key: 'accommodation', label: 'Accommodation' },
-  { key: 'food', label: 'Food' },
-  { key: 'transport', label: 'Transport' },
-  { key: 'overall', label: 'Overall' },
-] as const
-
 /** Parse 'YYYY-MM-DD HH:mm' (IST) to epoch ms. */
 function parsePlannedMs(value: string): number | null {
   const m = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/.exec(String(value || '').replace(/^'/, ''))
@@ -122,13 +114,7 @@ export default function ItineraryPage() {
 
   const confirmArrival = async () => {
     if (!arriving || saving) return
-    const ratedValues = RATING_CRITERIA.map((c) => scores[c.key])
-    const anyRated = ratedValues.some((v) => v > 0)
-    const allRated = ratedValues.every((v) => v > 0)
-    if (anyRated && !allRated) {
-      setErrors({ ratings: 'Rate all five categories, or clear every star.' })
-      return
-    }
+    const rated = scores.overall > 0
     setErrors({})
     setSaving(true)
     try {
@@ -139,7 +125,7 @@ export default function ItineraryPage() {
         notes,
       })
       let ratingSaved = false
-      if (anyRated && allRated) {
+      if (rated) {
         try {
           await api('ratings.submit', { tripId, stopId: arriving.stopId, ...scores, feedback: ratingFeedback })
           ratingSaved = true
@@ -172,7 +158,7 @@ export default function ItineraryPage() {
   if (!tripId) {
     return (
       <>
-        <PageHeader title="Itinerary" />
+        <PageHeader title="Map" />
         <Card className="p-6 text-center text-sm text-zinc-500">No trip is assigned to your account yet.</Card>
       </>
     )
@@ -193,7 +179,7 @@ export default function ItineraryPage() {
 
   return (
     <>
-      <PageHeader title="Trip Itinerary" subtitle={stops.length ? `${arrivedCount} of ${stops.length} stops reached` : undefined} />
+      <PageHeader title="Map" subtitle={stops.length ? `${arrivedCount} of ${stops.length} stops reached` : undefined} />
 
       {currentStop ? (
         <Card className="mb-4 border-brand-200 bg-brand-50/50 p-4">
@@ -326,16 +312,11 @@ export default function ItineraryPage() {
           </Field>
 
           <div className="rounded-xl border border-zinc-200 p-3">
-            <p className="flex items-center gap-1.5 text-sm font-medium text-zinc-800">
-              <Star className="size-4 fill-amber-400 text-amber-400" /> Rate this place (optional)
-            </p>
-            <div className="mt-2 space-y-2">
-              {RATING_CRITERIA.map((c) => (
-                <div key={c.key} className="flex items-center justify-between gap-3">
-                  <span className="text-xs text-zinc-600">{c.label}</span>
-                  <StarRating size="sm" value={scores[c.key]} onChange={(v) => setScores((s) => ({ ...s, [c.key]: v }))} label={c.label} />
-                </div>
-              ))}
+            <div className="flex items-center justify-between gap-3">
+              <p className="flex items-center gap-1.5 text-sm font-medium text-zinc-800">
+                <Star className="size-4 fill-amber-400 text-amber-400" /> Rate this place (optional)
+              </p>
+              <StarRating value={scores.overall} onChange={(v) => setScores({ destination: v, accommodation: v, food: v, transport: v, overall: v })} label="Overall rating" />
             </div>
             {errors.ratings ? <p className="mt-2 text-xs text-red-600">{errors.ratings}</p> : null}
             <Textarea

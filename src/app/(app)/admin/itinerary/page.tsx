@@ -31,7 +31,7 @@ export default function AdminItineraryPage() {
   if (!trips.length) {
     return (
       <>
-        <PageHeader title="Itinerary" />
+        <PageHeader title="Map" />
         <Card>
           <EmptyState title="No trips available" />
         </Card>
@@ -45,7 +45,7 @@ export default function AdminItineraryPage() {
   return (
     <>
       <PageHeader
-        title="Itinerary"
+        title="Map"
         subtitle={data ? `${stops.length} stops · ${arrivedCount} reached` : undefined}
       />
 
