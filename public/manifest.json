@@ -1,0 +1,10 @@
+{
+  "name": "Ziyarah — Travel Management",
+  "short_name": "Ziyarah",
+  "description": "Expense, budget and itinerary management for college Ziyath trips.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f8",
+  "theme_color": "#0f766e",
+  "icons": []
+}
