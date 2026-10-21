@@ -45,6 +45,17 @@ describe('authorization', () => {
     const all = Z.scopedTripIds(admin, null)
     expect(all.tripIds).toEqual(['kerala', 'mumbai'])
   })
+
+  it('scopedTripIds allows admin without an attached trip catalog', () => {
+    const bareAdmin = { userId: 'U4', role: 'admin', active: true, tripIds: [] }
+    const picked = Z.scopedTripIds(bareAdmin, ['kerala', 'kashmir'])
+    expect(picked.ok).toBe(true)
+    expect(picked.tripIds).toEqual(['kerala', 'kashmir'])
+    const none = Z.scopedTripIds(bareAdmin, null)
+    expect(none.ok).toBe(true)
+    expect(none.tripIds).toEqual([])
+    expect(Z.scopedTripIds({ userId: 'U5', role: 'coordinator', active: true, tripIds: [] }, ['kerala']).ok).toBe(false)
+  })
 })
 
 describe('expense validation', () => {

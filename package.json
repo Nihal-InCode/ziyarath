@@ -2,7 +2,7 @@
   "name": "ziyarah",
   "private": true,
   "version": "1.0.0",
-  "description": "Ziyath Travel Management - expense, budget and itinerary management for college Ziyath trips",
+  "description": "Ziyarath Travel Management - expense, budget and itinerary management for college Ziyarath trips",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

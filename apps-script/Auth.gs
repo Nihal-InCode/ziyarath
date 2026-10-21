@@ -153,7 +153,24 @@ function currentUser_(token) {
   var user = findUserById_(payload.sub)
   if (!user || !user.active) return null
   if (Number(user.sessionVersion) !== Number(payload.sv)) return null
-  return user
+  if (user.role !== Ziyarah.ROLE_ADMIN) return user
+  // Admins may read every trip; attach the full trip catalog so scoped
+  // list/report requests (expenses.list, reports.summary) can validate.
+  // Copy first so the cached user record is never mutated.
+  var scoped = {}
+  for (var k in user) {
+    if (Object.prototype.hasOwnProperty.call(user, k)) scoped[k] = user[k]
+  }
+  scoped.allTripIds = allTripIds_()
+  return scoped
+}
+
+/** All trip ids (active and inactive) for admin list scoping. */
+function allTripIds_() {
+  var trips = getTrips_()
+  var ids = []
+  for (var i = 0; i < trips.length; i++) ids.push(trips[i].tripId)
+  return ids
 }
 
 function tripsForUser_(user, trips) {

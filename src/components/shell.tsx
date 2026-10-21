@@ -106,9 +106,8 @@ export function Shell({ children }: { children: ReactNode }) {
       <header className="no-print sticky top-0 z-40 border-b border-zinc-200/80 bg-white/90 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
           <div className="flex min-w-0 items-center gap-2.5">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-sm font-bold text-white">
-              Z
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icon-192.png" alt="" className="size-8 shrink-0 rounded-xl object-cover" />
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold leading-tight text-zinc-900">
                 {isAdmin ? 'Ziyarah Admin' : tripName || 'Ziyarah'}

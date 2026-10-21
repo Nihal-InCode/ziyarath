@@ -47,12 +47,15 @@ export default function LoginPage() {
     <div className="flex min-h-dvh flex-col items-center justify-center px-5 py-10">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <span className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-brand-700 text-2xl font-bold text-white">
-            Z
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/icon-192.png"
+            alt=""
+            className="mx-auto mb-4 size-14 rounded-2xl object-cover"
+          />
           <h1 className="text-2xl font-semibold tracking-tight text-zinc-900">Ziyarah</h1>
           <p className="mt-1.5 text-sm text-zinc-500">
-            Travel expense management for Kerala, Tamil Nadu, Mumbai and Kashmir Ziyath trips.
+            Travel expense management for Kerala, Tamil Nadu, Mumbai and Kashmir Ziyarath trips.
           </p>
         </div>
 

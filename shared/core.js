@@ -21,10 +21,10 @@ var Ziyarah = (function () {
     'Other',
   ]
   var DEFAULT_TRIPS = [
-    { tripId: 'kerala', name: 'Kerala Ziyath' },
-    { tripId: 'tamilnadu', name: 'Tamil Nadu Ziyath' },
-    { tripId: 'mumbai', name: 'Mumbai Ziyath' },
-    { tripId: 'kashmir', name: 'Kashmir Ziyath' },
+    { tripId: 'kerala', name: 'Kerala Ziyarath' },
+    { tripId: 'tamilnadu', name: 'Tamil Nadu Ziyarath' },
+    { tripId: 'mumbai', name: 'Mumbai Ziyarath' },
+    { tripId: 'kashmir', name: 'Kashmir Ziyarath' },
   ]
 
   // ---------------------------------------------------------------- permissions
@@ -107,13 +107,19 @@ var Ziyarah = (function () {
     if (!user || user.active === false) {
       return { ok: false, code: 'unauthenticated', message: 'Sign in required.' }
     }
-    var allowed = user.role === ROLE_ADMIN ? (user.allTripIds || []) : (user.tripIds || [])
+    var isAdmin = user.role === ROLE_ADMIN
+    var allowed = isAdmin ? (user.allTripIds || []) : (user.tripIds || [])
     var req = []
     if (requested && requested.length) {
       for (var i = 0; i < requested.length; i++) {
         var t = String(requested[i] || '').trim()
         if (t && req.indexOf(t) === -1) req.push(t)
       }
+    }
+    if (isAdmin && !allowed.length) {
+      // Admin without an attached trip catalog may read any requested trip
+      // (and reads nothing when no trips were requested).
+      return { ok: true, tripIds: req }
     }
     if (!req.length) return { ok: true, tripIds: allowed.slice() }
     for (var j = 0; j < req.length; j++) {

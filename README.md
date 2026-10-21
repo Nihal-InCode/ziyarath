@@ -1,6 +1,6 @@
-# Ziyarah — Ziyath Travel Management
+# Ziyarah — Ziyarath Travel Management
 
-Mobile-first web app for managing expenses, budgets, itineraries and ratings for four college Ziyath trips:
+Mobile-first web app for managing expenses, budgets, itineraries and ratings for four college Ziyarath trips:
 
 **Kerala · Tamil Nadu · Mumbai · Kashmir**
 
@@ -53,8 +53,8 @@ Mobile-first web app for managing expenses, budgets, itineraries and ratings for
 1. In the editor, select function **`setupAll`** and click **Run**.
 2. Approve the permission prompts (spreadsheets, Drive, external requests).
 3. Open **Executions** (or View → Logs) to see what was created:
-   - Master spreadsheet: `Ziyath Master - Travel Management`
-   - Four trip spreadsheets: `Ziyath Expenses - Kerala` etc., each with tabs
+   - Master spreadsheet: `Ziyarath Master - Travel Management`
+   - Four trip spreadsheets: `Ziyarath Expenses - Kerala` etc., each with tabs
      `Expenses`, `TripPlan`, `Progress`, `Ratings`, `AuditLog`
    - Master tabs: `Trips`, `Users`, `Budgets`, `Categories`, `Settings`, `AuditLog`
    - Default categories and settings rows
@@ -224,7 +224,7 @@ Google Sheets (master + 4 trip spreadsheets, private)
   manual Refresh buttons everywhere. Apps Script has no WebSockets; polling is the
   supported strategy.
 - **Receipts (optional):** photos are compressed on the phone, stored in a private Drive
-  folder (`Ziyath Receipts`) owned by you, and served back only through the authorized API.
+  folder (`Ziyarath Receipts`) owned by you, and served back only through the authorized API.
 
 ---
 

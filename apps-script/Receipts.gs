@@ -15,8 +15,9 @@ function receiptFolder_() {
       // Folder was deleted; recreate below.
     }
   }
-  var it = DriveApp.getFoldersByName('Ziyath Receipts')
-  var folder = it.hasNext() ? it.next() : DriveApp.createFolder('Ziyath Receipts')
+  var it = DriveApp.getFoldersByName('Ziyarath Receipts')
+  if (!it.hasNext()) it = DriveApp.getFoldersByName('Ziyath Receipts') // legacy folder name
+  var folder = it.hasNext() ? it.next() : DriveApp.createFolder('Ziyarath Receipts')
   props.setProperty('RECEIPT_FOLDER_ID', folder.getId())
   return folder
 }

@@ -7,10 +7,10 @@
  * Then run the printed instructions (execution log shows created URLs).
  */
 
-var MASTER_NAME = 'Ziyath Master - Travel Management'
+var MASTER_NAME = 'Ziyarath Master - Travel Management'
 
 function tripSheetName_(tripName) {
-  return 'Ziyath Expenses - ' + tripName
+  return 'Ziyarath Expenses - ' + tripName
 }
 
 function ensureTab_(ss, tabName) {
